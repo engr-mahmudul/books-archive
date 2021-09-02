@@ -16,3 +16,15 @@ input{
     text-align: center;
     border-radius: 10px;
 }
+.card-img-style{
+    height: 250px;
+    
+   
+}
+h6{
+    font-size: 15px;
+}
+span{
+    color: rgb(44, 44, 173);
+    font-weight: 700;
+}
