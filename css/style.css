@@ -1,3 +1,4 @@
+/* Navba Style*/
 nav{
     background-image: linear-gradient(to right, rgb(141, 174, 187) , rgb(161, 122, 163));
 }
@@ -16,6 +17,7 @@ input{
     text-align: center;
     border-radius: 10px;
 }
+/* Card style */
 .card-img-style{
     height: 250px;
     
