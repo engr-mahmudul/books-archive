@@ -81,6 +81,8 @@ const displayData = (array) => {
 const getFetchData = (data, Text) => {
     // If there has no search result then execute this block
     if (data.numFound === 0) {
+        // Spinner  turning off here 
+        document.getElementById("spinner").classList.add("d-none");
         let messageDiv = document.getElementById('messages');
 
         let message = document.createElement('div');
