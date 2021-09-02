@@ -1,0 +1,18 @@
+nav{
+    background-image: linear-gradient(to right, rgb(141, 174, 187) , rgb(161, 122, 163));
+}
+.btn-bg{
+    background-color: rgb(103, 54, 93);
+}
+.a-design{
+    text-decoration: none;
+    font-size:x-large;
+    color: white;
+    font-weight: 700;
+}
+input{
+    font-size: larger;
+    border: 1px solid black;
+    text-align: center;
+    border-radius: 10px;
+}
