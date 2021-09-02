@@ -22,7 +22,7 @@ const showFetchData = (data, Text) => {
 // Fetching Function 
 const fetchUrlWithText = (Text) => {
     console.log("fetching.....");
-    url = `http://openlibrary.org/search.json?q=${Text}`
+    url = `http://openlibrary.org/search.json?q=${Text}`;
     fetch(url)
         .then(response => response.json())
         .then(data => showFetchData(data, Text))
