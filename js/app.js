@@ -6,7 +6,7 @@ const displayData = (array) => {
     const itemContainer = document.getElementById('item-container');
 
     array.forEach(x => {
-        console.log(x);
+
         // All the data are collected from object's property and assign to thevariables through Error handling
         //Book Name
         let bookName;
@@ -26,18 +26,13 @@ const displayData = (array) => {
         }
         //First publishing date
         let publishingYear;
-        if(x.first_publish_year === undefined){
+        if (x.first_publish_year === undefined) {
             publishingYear = 'Is not Given';
         }
-        else{
+        else {
             publishingYear = x.first_publish_year;
         }
-        // try {
-        //     publishingYear = x.first_publish_year;
-        // }
-        // catch (err) {
-        //     publishingYear = "Is not Given";
-        // }
+
         // Publisher Name 
 
         let publisherName;
