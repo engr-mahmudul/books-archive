@@ -22,7 +22,7 @@ const showFetchData = (data, Text) => {
 // Fetching Function 
 const fetchUrlWithText = (Text) => {
     console.log("fetching.....");
-    url = `http://openlibrary.org/search.json?q=${Text}`;
+    url = `https://openlibrary.org/search.json?q=${Text}`;
     fetch(url)
         .then(response => response.json())
         .then(data => showFetchData(data, Text))
@@ -36,7 +36,7 @@ const validateSearchText = (Text) => {
         let div = document.createElement('div');
         div.classList.add("bg-danger", "p-3", "container", "w-80", "border", "rounded");
         div.innerHTML = `
-        <p class="text-white text-center fw-bold fs-5 text "> Please put a Food name for searching</p>
+        <p class="text-white text-center fw-bold fs-5 text "> Please put a name for searching</p>
         `
         messageField.appendChild(div);
     }
