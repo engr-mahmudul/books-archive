@@ -1,10 +1,13 @@
-
-
-// Show Data Function
+//Display all the data in the web page through this function
 const displayData = (array) => {
+    // Spinner  turning off here 
+    document.getElementById("spinner").classList.add("d-none");
+    //Catch item container
     const itemContainer = document.getElementById('item-container');
+
     array.forEach(x => {
         console.log(x);
+        // All the data are collected from object's property and assign to thevariables through Error handling
         let bookName;
         try {
             bookName = x.title;
@@ -12,7 +15,7 @@ const displayData = (array) => {
         catch (err) {
             bookName = "Is not Given";
         }
-        // Author Name and Error Handling
+        // Author Name 
         let authoName;
         try {
             authoName = x.author_name[0];
@@ -20,7 +23,7 @@ const displayData = (array) => {
         catch (err) {
             authoName = "Is not Given";
         }
-        // Publisher Name and Error Handling
+        // Publisher Name 
 
         let publisherName;
         try {
@@ -30,13 +33,13 @@ const displayData = (array) => {
             publisherName = "Is not Given";
         }
 
-
+        // If cover id is not given in the fetch data then execute this block
         if (x.cover_i === undefined) {
             const newDiv = document.createElement('div');
             newDiv.classList.add('col');
             newDiv.innerHTML = `
             <div class="card border border-success rounded">
-                <img src="#" class="card-img-top  card-img-style" alt="Image Not Given for this book">
+                <img src="images/aternative-img.png" class="card-img-top  card-img-style" alt="Image Not Given for this book">
                 <div class="card-body">
                 <h5 class="card-title">${bookName}</h5>
                 <h6 class="card-title"><span>Author Name :</span> ${authoName}</h6>
@@ -49,6 +52,7 @@ const displayData = (array) => {
             itemContainer.appendChild(newDiv);
 
         }
+        //If fetch data contains the cover id then execute this block
         else {
 
             let imageUrl = `https://covers.openlibrary.org/b/id/${x.cover_i}-M.jpg`;
@@ -75,7 +79,7 @@ const displayData = (array) => {
     });
 }
 const getFetchData = (data, Text) => {
-    // If there has no search result 
+    // If there has no search result then execute this block
     if (data.numFound === 0) {
         let messageDiv = document.getElementById('messages');
 
@@ -84,21 +88,21 @@ const getFetchData = (data, Text) => {
         messageDiv.appendChild(message);
         //console.log(data.docs.cover_i);
     }
-    // Founded Results 
+    // If found any results then execute this block
     else {
         // Show the matches Search items
         let messageDiv = document.getElementById('messages');
         let message = document.createElement('div');
         message.innerHTML = `<p class='text-center p-2  container  text-success'>Your searching text <b > "${Text}" </b>matches with <b>${data.numFound} </b>items. Here is showing first <b>${data.docs.length}</b> items details.</p>`;
         messageDiv.appendChild(message);
-        // Match result showing End 
+        // Display Function call to show all the aquired data
         displayData(data.docs);
     }
 }
 // Fetching Function 
 const fetchUrlWithText = (Text) => {
     console.log("fetching.....");
-    url = `https://openlibrary.org/search.json?q=${Text}`
+    url = `https://openlibrary.org/search.json?q=${Text}`;
     fetch(url)
         .then(response => response.json())
         .then(data => getFetchData(data, Text))
@@ -107,7 +111,7 @@ const fetchUrlWithText = (Text) => {
 const validateSearchText = (Text) => {
     if (Text === '') {
 
-        //console.log("Empty Search field");
+
         const messageField = document.getElementById('messages');
         let div = document.createElement('div');
         div.classList.add("p-3", "container", "w-80", "border", "rounded");
@@ -117,6 +121,7 @@ const validateSearchText = (Text) => {
         messageField.appendChild(div);
     }
     else {
+        document.getElementById("spinner").classList.remove("d-none");
         fetchUrlWithText(Text);
     }
 }
@@ -128,7 +133,7 @@ document.getElementById('search-button').addEventListener('click', () => {
     document.getElementById('messages').textContent = '';
     document.getElementById('item-container').textContent = '';
 
-
+    //function call
     validateSearchText(serchText);
     texField.value = '';
 

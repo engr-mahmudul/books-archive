@@ -32,8 +32,8 @@
                     </ul>
                     <div class="d-flex">
                         <!-- Search Field  -->
-                        <input id="search-field" class="form-control me-2" type="search"
-                            placeholder="Search Your Book" aria-label="Search">
+                        <input id="search-field" class="form-control me-2" type="search" placeholder="Search Your Book"
+                            aria-label="Search">
                         <!-- Serach Button  -->
                         <button id="search-button" class="btn text-white btn-bg" type="submit">Search</button>
                     </div>
@@ -50,12 +50,14 @@
 
             </div>
             <!-- Single item Details Div  -->
-            <div id="item-details" class="w-50 mx-auto my-4">
-
+            <div class="d-flex justify-content-center mt-5 d-none" id="spinner">
+                <div class="spinner-border text-success" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
             </div>
             <!-- All item container Div  -->
             <div id="item-container" class="container row row-cols-1 row-cols-md-3 g-5">
-                
+
             </div>
         </section>
     </main>
