@@ -6,8 +6,8 @@ const displayData = (array) => {
     const itemContainer = document.getElementById('item-container');
 
     array.forEach(x => {
-        console.log(x);
         // All the data are collected from object's property and assign to thevariables through Error handling
+        //Book Name
         let bookName;
         try {
             bookName = x.title;
@@ -22,6 +22,14 @@ const displayData = (array) => {
         }
         catch (err) {
             authoName = "Is not Given";
+        }
+        //First publishing date
+        let publishingYear;
+        try {
+            publishingYear = x.first_publish_year;
+        }
+        catch (err) {
+            publishingYear = "Is not Given";
         }
         // Publisher Name 
 
@@ -43,7 +51,7 @@ const displayData = (array) => {
                 <div class="card-body">
                 <h5 class="card-title">${bookName}</h5>
                 <h6 class="card-title"><span>Author Name :</span> ${authoName}</h6>
-                <h6 class="card-title"><span>First Published :</span> ${x.first_publish_year}</h6>
+                <h6 class="card-title"><span>First Published :</span> ${publishingYear}</h6>
                 <h6 class="card-title"><span>Publisher :</span>${publisherName}</h6>
                     
                 </div>
@@ -65,7 +73,7 @@ const displayData = (array) => {
                 <div class="card-body">
                 <h5 class="card-title">${bookName}</h5>
                 <h6 class="card-title"><span>Author Name :</span> ${authoName}</h6>
-                <h6 class="card-title"><span>First Published :</span> ${x.first_publish_year}</h6>
+                <h6 class="card-title"><span>First Published :</span> ${publishingYear}</h6>
                 <h6 class="card-title"><span>Publisher :</span>${publisherName}</h6>
                     
                     
@@ -83,8 +91,8 @@ const getFetchData = (data, Text) => {
     if (data.numFound === 0) {
         // Spinner  turning off here 
         document.getElementById("spinner").classList.add("d-none");
+        //Show message
         let messageDiv = document.getElementById('messages');
-
         let message = document.createElement('div');
         message.innerHTML = `<p class='text-center p-3  container text-2xl '>Your searching result <b>"${Text}"</b> is not found</p>`;
         messageDiv.appendChild(message);
@@ -103,7 +111,7 @@ const getFetchData = (data, Text) => {
 }
 // Fetching Function 
 const fetchUrlWithText = (Text) => {
-    console.log("fetching.....");
+
     url = `https://openlibrary.org/search.json?q=${Text}`;
     fetch(url)
         .then(response => response.json())
